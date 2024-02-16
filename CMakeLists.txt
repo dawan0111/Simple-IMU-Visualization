@@ -9,9 +9,20 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_eigen REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+
+add_library(IMU_UTILS src/imu_util.cpp)
+target_include_directories(IMU_UTILS PUBLIC include)
+ament_target_dependencies(IMU_UTILS
+  Eigen3
+  tf2
+  tf2_eigen
+)
 
 set(EXEC_NAME imu_visualization_node)
 
@@ -19,6 +30,9 @@ add_executable(${EXEC_NAME} src/imu_visualization_node.cpp)
 ament_target_dependencies(imu_visualization_node
   rclcpp
   sensor_msgs
+  Eigen3
+  tf2
+  tf2_eigen
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
@@ -27,6 +41,7 @@ target_include_directories(${EXEC_NAME} PUBLIC
 
 target_link_libraries(${EXEC_NAME}
   ${PCL_LIBRARIES}
+  IMU_UTILS
 )
 install(TARGETS ${EXEC_NAME}
   DESTINATION lib/${PROJECT_NAME})

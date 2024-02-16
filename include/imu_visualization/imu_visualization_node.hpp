@@ -1,5 +1,6 @@
-#ifndef IMU_VISUALIZATION_NODE
-#define IMU_VISUALIZATION_NODE
+#ifndef IMU_VISUALIZATION_NODE_HPP_
+#define IMU_VISUALIZATION_NODE_HPP_
+#include "imu_visualization/imu_util.hpp"
 #include <iostream>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/imu.hpp>

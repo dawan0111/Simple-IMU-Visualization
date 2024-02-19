@@ -12,6 +12,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_eigen REQUIRED)
+find_package(tf2_ros REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -33,6 +34,7 @@ ament_target_dependencies(imu_visualization_node
   Eigen3
   tf2
   tf2_eigen
+  tf2_ros
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
